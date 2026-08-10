@@ -270,11 +270,13 @@ def buyer_flow(product_line: str | None = None, retailer_id: str | None = None,
 
     Counts are PANEL-MEASURED households, not projected to brand scale. This used to
     say it mirrors the panel's ``get_buyer_flow``; that stopped being true at panel
-    0.2.0, which multiplies its absolute counts by the locked projection factor k
-    (~164.07) while this function keeps the raw household counts. Both scales are
-    internally consistent -- this tool reports no absolute dollar figure anywhere, so
-    nothing here is brand-scale and there is nothing for these counts to disagree
-    with. See DECISIONS.md "Panel-measured households, not brand-scale".
+    0.2.0, which multiplies its absolute counts by the panel's locked projection
+    factor k while this function keeps the raw household counts. (The specific value
+    of k is not cited here — it lives in the panel package and would only go stale in
+    a copy.) Both scales are internally consistent -- this tool reports no absolute
+    dollar figure anywhere, so nothing here is brand-scale and there is nothing for
+    these counts to disagree with. See DECISIONS.md "Panel-measured households, not
+    brand-scale".
 
     With a sku it computes the same flow for that one item. Columns: from_index,
     from_label, to_label, prior_buyers, current_buyers, retained, new, lapsed,

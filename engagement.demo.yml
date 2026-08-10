@@ -1,0 +1,22 @@
+# Lailara LLC — Trial vs Repeat engagement config (DEMO)
+# Canonical Cinderhaven identity; demo: true so the deploy guard ignores it.
+# The deployed dashboard renders from the seeded cinderhaven_household_panel — this
+# config exercises client_mode.py on a demo-shaped transaction file under
+# client-data/ (gitignored).
+client:
+  name: "Cinderhaven Provisions (demo)"
+engagement:
+  id: "CINDERHAVEN-DEMO"
+as_of_date: "2025-12-29"     # panel as-of (trial_repeat.AS_OF)
+prepared_by: "Lailara LLC"
+demo: true
+basis:
+  repeat_window_weeks: 12    # REQUIRED: the repeat window drives the maturity cutoff
+inputs:
+  input: "client-data/transactions.csv"
+columns:
+  household_id: "household_id"
+  purchase_date: "purchase_date"
+  product_line: "product_line"
+thresholds:
+  fail_on_missing_required_column: true

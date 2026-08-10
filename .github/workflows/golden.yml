@@ -1,0 +1,35 @@
+name: golden
+
+# Gates the demo golden lock (tests/test_demo_golden.py), which pins the demo
+# repeat summary computed straight from the engine on the seeded panel.
+#
+# CREDENTIAL-FREE by design: this job does NOT install lailara_engagement and does
+# NOT use the CI PAT. Installs only the repo's vendored data/palette packages (as
+# the Dockerfile does) + the repo itself. The lib-dependent engine-fidelity and
+# client-mode tests run in the separate client-mode.yml job. A PAT expiry can
+# therefore never redden this demo invariant.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  golden:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Engagement guard
+        run: python3 scripts/engagement_guard.py
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install (vendored packages + repo, NO lailara_engagement)
+        run: |
+          python -m pip install --upgrade pip
+          pip install packages/lailara-palette/ packages/cinderhaven-store-universe/ packages/cinderhaven-household-panel/
+          pip install -e ".[dev]"
+      - name: Demo golden lock
+        run: python -m pytest tests/test_demo_golden.py -q
