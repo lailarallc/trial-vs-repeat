@@ -1,10 +1,28 @@
 /*
- * lailara-frame.css — v1.3.0
+ * lailara-frame.css — v1.5.0
  * Brand frame and layout kit for Lailara LLC tools.
  * Every lailarallc.com subdomain tool includes this file.
  *
  * Source of truth: LAILARA_DESIGN_SYSTEM.md v2 (May 2026)
  * Live-site reference: lailarallc.com globals.css (max-width 1200px, nav 80px)
+ *
+ * v1.5.0 - Measure alignment (2026-08-26). A content column now has ONE shared
+ * right edge: --ll-content-measure (aliases --ll-body-max-width, 720px) and the
+ * .ll-column wrapper. Every text element in the column - display heading, lede,
+ * prose, footnote - wraps at that edge, so a lede can never end short of the H1
+ * above it. Motivated by the Lift Math hero, where a 15em display headline ran
+ * wider than the 720px lede beneath it. Display leads still cap line length with
+ * --ll-display-max-width, but inside the column edge. See LAILARA_DESIGN_SYSTEM.md
+ * § Typography (Measure alignment). Adoption: new tools from day one; existing
+ * tools on next touch.
+ *
+ * v1.4.0 - Measure tokens (2026-07-30). --ll-body-max-width: 720px shipped in
+ * v1.0.0 but nothing ever consumed it, so every tool hand-picked its own prose
+ * width: 660px, 640px, and ch values from 22ch to 72ch. `ch` is the width of the
+ * digit "0" (~0.5em on Source Sans), so 60ch rendered ~447px - about 45 real
+ * characters, not 60 - and prose wrapped two lines early inside a 1200px shell.
+ * Adds --ll-body-max-width-narrow/-wide, --ll-display-max-width, and .ll-measure*
+ * utilities. All 30 fleet tools were patched in place to consume the token.
  *
  * v1.3.0 — Base layer (2026-07-27). The frame styled .lailara-page but never
  * body, so unstyled text fell back to Times New Roman and black, and the warm
@@ -221,6 +239,7 @@
   --ll-body-max-width-narrow: 560px;  /* helper text, captions, form hints  */
   --ll-body-max-width-wide:   900px;  /* wide narrative, changelogs         */
   --ll-display-max-width:      18em;  /* hero/display leads - em tracks size */
+  --ll-content-measure: var(--ll-body-max-width);  /* one shared column edge - heading + prose + footnote (.ll-column) */
   --ll-radius:         2px;
   --ll-section-gap:    60px;
   --ll-nav-height:     80px;
@@ -549,3 +568,17 @@ body {
 .ll-measure-narrow  { max-width: var(--ll-body-max-width-narrow); }
 .ll-measure-wide    { max-width: var(--ll-body-max-width-wide); }
 .ll-measure-display { max-width: var(--ll-display-max-width); }
+
+/* -- Measure alignment (one column, one edge) ------------------
+   Put .ll-column on the wrapper that holds a heading and the text
+   under it. Everything inside wraps at the same right edge, so a
+   lede never ends short of the H1 above it. Prefer this over
+   giving each block its own .ll-measure and hoping the numbers
+   line up. A display lead inside the column may still cap its own
+   line length with .ll-measure-display -- em tracks type size --
+   but that cap sits inside this edge, never wider than it.
+   Motivating instance: the Lift Math hero (a 15em headline that
+   overran its 720px lede). See LAILARA_DESIGN_SYSTEM.md
+   § Typography (Measure alignment).                           */
+
+.ll-column { max-width: var(--ll-content-measure); }
