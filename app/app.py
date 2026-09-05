@@ -16,7 +16,22 @@ app = dash.Dash(
     assets_folder="../assets",
     suppress_callback_exceptions=True,
     title="Leaky Bucket — Trial vs Repeat",
-    meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}],
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1"},
+        {"name": "description", "content": "Of the households that tried you, how many came back, and is penetration growth real adoption or expensive sampling?"},
+        {"property": "og:title", "content": "Leaky Bucket: Trial vs Repeat"},
+        {"property": "og:description", "content": "Of the households that tried you, how many came back, and is penetration growth real adoption or expensive sampling?"},
+        {"property": "og:type", "content": "website"},
+        {"property": "og:url", "content": "https://leakybucket.lailarallc.com/"},
+        {"property": "og:image", "content": "https://lailarallc.com/og/s/leakybucket.png"},
+        {"property": "og:image:secure_url", "content": "https://lailarallc.com/og/s/leakybucket.png"},
+        {"property": "og:image:type", "content": "image/png"},
+        {"property": "og:image:width", "content": "1200"},
+        {"property": "og:image:height", "content": "630"},
+        {"property": "og:image:alt", "content": "Leaky Bucket: Trial vs Repeat"},
+        {"name": "twitter:card", "content": "summary_large_image"},
+        {"name": "twitter:image", "content": "https://lailarallc.com/og/s/leakybucket.png"},
+    ],
 )
 server = app.server
 server.secret_key = os.environ.get("FLASK_SECRET_KEY", secrets.token_hex(32))
