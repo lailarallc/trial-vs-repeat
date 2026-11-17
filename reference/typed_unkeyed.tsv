@@ -1,0 +1,66 @@
+# Typed figures this repo prints with no canon key (owner, 2026-11-15; plan U19, U22).
+# One row per figure per location. The platform's fleet check holds the row count to a ceiling that only
+# falls: give a figure a key (or stop printing it) and delete its row. listed=yes: the read map names it, and
+# U19 owes its key; listed=no: U22 works it down. Generated from the 2026-11-15 manifest pass.
+file_line	printed	exact_value	meaning	source	kind	listed
+app/constants.py:62	0.30	0.30	mature repeat threshold reading as a brand (>= 30%)	stated threshold	assumption	no
+app/trial_repeat.py:148	~$8.07	8.07	average retail unit price	comment only; source not in repo (canon units_scan / retail_scan cy2025 = 8.07)	restatement	yes
+app/trial_repeat.py:148	~$1.45	1.45	trade support per trial unit (18% x $8.07)	arithmetic in comment	fixed-input	no
+app/trial_repeat.py:155	0.18	0.18	assumed trial promo depth off retail (~18%)	constant; comment trial_repeat.py:147 says measured from platform promotions data	assumption	no
+app/trial_repeat.py:166	5,000-household	5000	household panel size	household-panel constants.py:35	fixed-input	no
+docs/launch/work-card.md:12	51% repeat	51	sticky launch 52-week repeat rate	seeded household panel (tests/test_trial_repeat.py:68)	fixed-input	yes
+packages/cinderhaven-household-panel/src/cinderhaven_household_panel/constants.py:35	5_000	5000	household panel size (synthetic panel households)	household-panel constant; households absent from warehouse	fixed-input	no
+packages/cinderhaven-household-panel/src/cinderhaven_household_panel/pricing.py:16	(7.50, 11.50)	7.50	AS shelf price band per unit, low (high 11.50)	household-panel pricing constant	fixed-input	no
+packages/cinderhaven-household-panel/src/cinderhaven_household_panel/pricing.py:17	(3.50, 6.50)	3.50	PS shelf price band per unit, low (high 6.50)	household-panel pricing constant	fixed-input	no
+packages/cinderhaven-household-panel/src/cinderhaven_household_panel/pricing.py:18	(5.50, 9.50)	5.50	SC shelf price band per unit, low (high 9.50)	household-panel pricing constant	fixed-input	no
+packages/cinderhaven-household-panel/src/cinderhaven_household_panel/pricing.py:19	(4.50, 8.50)	4.50	DG shelf price band per unit, low (high 8.50)	household-panel pricing constant	fixed-input	no
+packages/cinderhaven-household-panel/src/cinderhaven_household_panel/pricing.py:20	(2.75, 5.25)	2.75	SB shelf price band per unit, low (high 5.25)	household-panel pricing constant	fixed-input	no
+packages/cinderhaven-household-panel/src/cinderhaven_household_panel/pricing.py:29	1.2	1.2	price elasticity	household-panel pricing constant	assumption	no
+packages/cinderhaven-household-panel/src/cinderhaven_household_panel/pricing.py:33	{1: 1.08, 2: 1.12, 3: 1.16, 4: 1.20}	1.08	2025 quarterly price ramp index (Q1 shown; Q4 1.20)	household-panel pricing constant	fixed-input	no
+packages/cinderhaven-household-panel/src/cinderhaven_household_panel/pricing.py:85	0.25	0.25	leaky launch (CHP-SB-010) trial reach	seeded launch-story parameter	fixed-input	no
+packages/cinderhaven-household-panel/src/cinderhaven_household_panel/pricing.py:86	0.15	0.15	leaky launch repeat propensity	seeded launch-story parameter	fixed-input	no
+packages/cinderhaven-household-panel/src/cinderhaven_household_panel/pricing.py:91	0.09	0.09	sticky launch (CHP-PS-010) trial reach	seeded launch-story parameter	fixed-input	no
+packages/cinderhaven-household-panel/src/cinderhaven_household_panel/pricing.py:92	0.52	0.52	sticky launch repeat propensity	seeded launch-story parameter	fixed-input	no
+packages/cinderhaven-household-panel/tests/test_canonical.py:23	== 5000	5000	asserts household panel size	household-panel constants.py:35	fixed-input	no
+packages/cinderhaven-household-panel/tests/test_canonical.py:35	== 50	50	asserts SKU count	canon universe.skus_total	restatement	no
+packages/cinderhaven-household-panel/tests/test_canonical.py:37	== 6	6	asserts retailer count	canon universe.retailers	restatement	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:10	door_count: 180	180	Walmart door count	store-universe seed constant (vendored package; mirrors platform universe, canon stores_total 640)	restatement	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:104	(0.60, 0.30, 0.10)	0.60	Walmart store volume-tier weights A/B/C (A shown)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:105	(0.70, 0.20, 0.10)	0.70	Costco store volume-tier weights A/B/C (A shown)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:106	(0.40, 0.40, 0.20)	0.40	Whole Foods store volume-tier weights A/B/C (A shown)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:107	(0.35, 0.40, 0.25)	0.35	Sprouts store volume-tier weights A/B/C (A shown)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:108	(0.40, 0.35, 0.25)	0.40	Kroger store volume-tier weights A/B/C (A shown)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:109	(0.15, 0.35, 0.50)	0.15	Regional Group store volume-tier weights A/B/C (A shown)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:11	door_count: 60	60	Costco door count	store-universe seed constant (vendored package; mirrors platform universe, canon stores_total 640)	restatement	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:115	AS 0.95 PS 0.70 SC 0.95 DG 0.70 SB 0.70	0.95	Whole Foods authorization rate by product line (AS shown)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:116	AS 0.55 PS 0.60 SC 0.50 DG 0.55 SB 0.55	0.55	Walmart authorization rate by product line (AS shown)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:117	AS 0.45 PS 0.50 SC 0.40 DG 0.45 SB 0.45	0.45	Costco authorization rate by product line (AS shown)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:118	AS 0.80 PS 0.85 SC 0.75 DG 0.80 SB 0.80	0.80	Kroger authorization rate by product line (AS shown)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:119	AS 0.80 PS 0.55 SC 0.80 DG 0.80 SB 0.55	0.80	Sprouts authorization rate by product line (AS shown)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:12	door_count: 120	120	Whole Foods door count	store-universe seed constant (vendored package; mirrors platform universe, canon stores_total 640)	restatement	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:120	AS 0.50 PS 0.55 SC 0.45 DG 0.50 SB 0.50	0.50	Regional Group authorization rate by product line (AS shown)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:125	A: 0.90	0.90	scan probability, volume tier A	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:126	B: 0.80	0.80	scan probability, volume tier B	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:127	C: 0.70	0.70	scan probability, volume tier C	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:13	door_count: 90	90	Sprouts door count	store-universe seed constant (vendored package; mirrors platform universe, canon stores_total 640)	restatement	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:134	0.03	0.03	Whole Foods never-scan base rate (authorized but never carried)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:135	0.05	0.05	Costco never-scan base rate (authorized but never carried)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:136	0.07	0.07	Kroger never-scan base rate (authorized but never carried)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:137	0.07	0.07	Sprouts never-scan base rate (authorized but never carried)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:138	0.09	0.09	Walmart never-scan base rate (authorized but never carried)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:139	0.15	0.15	Regional Group never-scan base rate (authorized but never carried)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:14	door_count: 150	150	Kroger door count	store-universe seed constant (vendored package; mirrors platform universe, canon stores_total 640)	restatement	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:144	2024-W27	202427	CHP-AS-009 late launch week (no scans before)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:145	2024-W40	202440	CHP-SB-006 late launch week (no scans before)	store-universe generator parameter (vendored package, seed 42); not a warehouse read	fixed-input	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:15	door_count: 40	40	Regional Group door count	store-universe seed constant (vendored package; mirrors platform universe, canon stores_total 640)	restatement	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:21	range(1, 11)	50	SKU list: 5 product lines x 10 SKUs (lines 21-37)	constant; canon universe.skus_total	restatement	no
+packages/cinderhaven-store-universe/src/cinderhaven_store_universe/constants.py:7	"pd.Timestamp(""2025-12-29"")"	20251229	DEMO_AS_OF_DATE, demo as-of date (Monday after last scan week 2025-12-27)	constant; canon data tail scan 2025-12-27	fixed-input	no
+tests/test_demo_golden.py:21	== 4487	4487	demo triers, brand total, default window	seeded household panel via repeat_summary	fixed-input	no
+tests/test_demo_golden.py:22	== 4456	4456	demo mature triers	seeded household panel	fixed-input	no
+tests/test_demo_golden.py:24	== 2188	2188	demo repeaters	seeded household panel	fixed-input	no
+tests/test_demo_golden.py:25	0.491	49.1	demo brand repeat rate	seeded household panel	fixed-input	no
+tests/test_demo_golden.py:26	2025-10-06	20251006	demo maturity cutoff date	seeded household panel (as-of 2025-12-29 minus window)	fixed-input	no
+tests/test_trial_repeat.py:61	== 1234	1234	leaky launch triers, 52-week window	seeded household panel via app/trial_repeat.py repeat_summary	fixed-input	no
+tests/test_trial_repeat.py:62	approx(0.14	14	leaky launch 52-week repeat rate (~14%)	seeded household panel via repeat_summary	fixed-input	no
+tests/test_trial_repeat.py:67	== 428	428	sticky launch triers, 52-week window	seeded household panel via repeat_summary	fixed-input	no
+tests/test_trial_repeat.py:68	approx(0.51	51	sticky launch 52-week repeat rate (~51%)	seeded household panel via repeat_summary	fixed-input	no
